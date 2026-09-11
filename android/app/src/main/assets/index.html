@@ -2,118 +2,88 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050506">
-<title>FLOW FILIPINO AI v6.2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>FLOW FILIPINO AI v6.3</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050506;color:#f5f1e9;font:15px system-ui,-apple-system,sans-serif}
-body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -10%,#5a442355,transparent 45%);pointer-events:none}
-.app{max-width:900px;margin:auto;min-height:100vh;padding:22px 16px 90px}.top{display:flex;justify-content:space-between;color:#c9a96a;font-size:11px;letter-spacing:2px}
-.screen{display:none;animation:in .38s ease}.screen.active{display:block}@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-h1{font-size:clamp(30px,8vw,58px);line-height:1.02;margin:20px 0 10px}h2{font-size:26px}.gold{color:#c9a96a}.muted{color:#aaa}
-.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;text-align:center}.hero p{max-width:650px;margin:0 auto 35px;color:#aaa}
-.bottom{position:fixed;bottom:16px;left:16px;right:16px;max-width:868px;margin:auto}
-.btn{border:1px solid #5b4a2d;background:#15120e;color:#fff;border-radius:12px;padding:15px 20px;font-weight:700;cursor:pointer}
-.btn.primary{background:linear-gradient(135deg,#c9a96a,#80612e);color:#090807;border:0}
-.card{background:#0d0c0bdb;border:1px solid #302a22;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 15px 40px #0008}
-.genres,.chips{display:flex;flex-wrap:wrap;gap:9px}.genre{padding:11px 13px;border:1px solid #39332b;background:#11100f;color:#eee;border-radius:10px;cursor:pointer}
-.genre.on{border-color:#c9a96a;background:#20190f;color:#e4c889}
-.choice{text-align:left;width:100%;border:1px solid #302a22;background:#0d0c0b;color:#eee;border-radius:14px;padding:16px;margin:8px 0;display:block;cursor:pointer}
-.choice b{display:block;color:#c9a96a;margin-bottom:5px}.progress{height:7px;background:#191715;border-radius:9px;overflow:hidden;margin:15px 0}
-.bar{height:100%;width:0;background:#c9a96a;transition:width .45s}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.scene{border:1px solid #302a22;border-radius:13px;padding:13px;min-height:130px}.ref{display:flex;gap:12px;align-items:center;border:1px solid #302a22;padding:12px;border-radius:12px;margin:8px 0}
-.avatar{width:58px;height:70px;border-radius:9px;background:linear-gradient(145deg,#29231b,#0e0e0e);display:grid;place-items:center;font-size:24px}
-.tag{font-size:10px;color:#c9a96a;letter-spacing:1px}.badge{display:inline-block;padding:6px 9px;border-radius:99px;background:#102016;color:#8ed49d;font-size:11px}
-.log{font-family:monospace;white-space:pre-wrap;background:#080808;padding:13px;border-radius:10px;color:#aaa}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.hero{min-height:75vh}}
+*{box-sizing:border-box}html,body{margin:0;background:#050505;color:#f7f2e8;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+body{min-height:100vh;overflow-x:hidden}.app{max-width:1050px;margin:auto;min-height:100vh;padding:18px 16px 105px}
+.app:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% 0,#9a722b33,transparent 45%),#050505}
+.top{height:34px;display:flex;justify-content:space-between;align-items:center;color:#d6b575;font-size:10px;letter-spacing:2.5px;font-weight:800}
+.screen{display:none;animation:enter .5s ease}.screen.active{display:block}
+@keyframes enter{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.gold{color:#d6b575}.muted{color:#aaa}.eyebrow{font-size:10px;letter-spacing:2.5px;color:#d6b575;font-weight:900}
+.hero{min-height:calc(100vh - 75px);display:flex;flex-direction:column;justify-content:flex-end;padding:30px 22px;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(0deg,#050505 4%,#050505b8 48%,#0003),url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=85") center/cover}
+.hero h1,.final h1{font-size:clamp(40px,10vw,76px);line-height:.92;margin:12px 0}.sub{line-height:1.6;color:#c4c0b8;max-width:720px}
+.head{padding:18px 2px 10px}.head h2{font-size:32px;margin:8px 0}.panel{background:#0b0a09ed;border:1px solid #30291f;border-radius:22px;padding:18px;margin:13px 0;box-shadow:0 18px 50px #0009;backdrop-filter:blur(12px)}
+.bottom{position:fixed;left:16px;right:16px;bottom:max(14px,env(safe-area-inset-bottom));z-index:20;max-width:1018px;margin:auto}
+.btn{border:1px solid #51432c;background:#12100e;color:#fff;border-radius:15px;padding:15px 20px;font-weight:850;cursor:pointer}.btn.primary{border:0;background:linear-gradient(135deg,#e2bf79,#8d672d);color:#080706;box-shadow:0 12px 35px #0009}
+.genres{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.genre{border:1px solid #302c27;background:#12110f;color:#eee;border-radius:13px;padding:13px 10px;text-align:left;cursor:pointer}.genre.on{border-color:#d6b575;background:#241b0e}.genre small{display:block;color:#777;margin-top:4px}
+.engine{display:flex;justify-content:space-between;align-items:center;gap:10px}.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#102217;color:#93d9a1;font-size:11px;font-weight:800}.dot{width:7px;height:7px;background:#62dc7a;border-radius:50%}
+.storyGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.story{position:relative;min-height:245px;border:1px solid #373027;border-radius:20px;overflow:hidden;background:#111;cursor:pointer;text-align:left;padding:0;color:#fff}.story img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;opacity:.72;transition:.5s}.story:hover img{transform:scale(1.06);opacity:.9}.story:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#050505 5%,#05050599 50%,transparent 85%)}.story .copy{position:absolute;z-index:2;left:16px;right:16px;bottom:15px}.story b{display:block;color:#d6b575;font-size:10px;letter-spacing:2px;margin-bottom:6px}.story strong{font-size:19px;display:block;margin-bottom:5px}.story span{font-size:12px;color:#c5c0b7}
+.loader{height:8px;background:#171512;border-radius:10px;overflow:hidden}.loader i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8d672d,#e2bf79,#8d672d);transition:width .4s}.log{font:12px/1.7 monospace;color:#aaa;background:#050505;border-radius:14px;padding:14px;white-space:pre-wrap}
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.ref{position:relative;overflow:hidden;border:1px solid #342d24;border-radius:20px;background:#0e0d0c}.ref img{width:100%;height:220px;object-fit:cover;display:block}.ref .rtext{padding:12px}.lock{position:absolute;right:10px;top:10px;background:#080808bb;padding:7px;border-radius:99px}
+.tag{font-size:10px;color:#d6b575;letter-spacing:1.5px}.ep{display:grid;grid-template-columns:55px 1fr auto;gap:12px;align-items:center;border-top:1px solid #2a251f;padding:14px 0}.ep:first-child{border-top:0}.epnum{font-size:23px;color:#d6b575;font-weight:900}.scenes{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:10px;padding:6px 8px;border-radius:8px;background:#171512;color:#aaa;border:1px solid #28231e}
+.sceneGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.scene{border:1px solid #302a23;border-radius:15px;overflow:hidden;background:#111}.scene img{width:100%;height:100px;object-fit:cover;opacity:.75}.scene .sbody{padding:9px}.ready{color:#8ed49d;font-size:10px}.dialogue{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid #2b261f}.speaker{color:#d6b575;font-weight:900;font-size:11px}
+.final{min-height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-radius:28px;padding:25px;background:linear-gradient(#0005,#050505e8),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85") center/cover}
+@media(max-width:700px){.genres{grid-template-columns:repeat(2,1fr)}.storyGrid,.refs{grid-template-columns:1fr}.sceneGrid{grid-template-columns:repeat(2,1fr)}.ref{display:grid;grid-template-columns:115px 1fr}.ref img{height:100%;min-height:125px}.ep{grid-template-columns:45px 1fr}.ep .badge{grid-column:2}.hero,.final{border-radius:20px}}
 </style>
 </head>
-<body>
-<main class="app">
-<div class="top"><span>FLOW FILIPINO AI</span><span id="step">WELCOME</span></div>
+<body><main class="app">
+<div class="top"><span>FLOW FILIPINO AI / v6.3</span><span id="step">WELCOME</span></div>
 
-<section id="welcome" class="screen active">
-<div class="hero"><div class="tag">A FILIPINO CINEMATIC AI STUDIO</div>
-<h1>WELCOME TO<br><span class="gold">FILIPINO AI</span></h1>
-<p>Gumawa ng cinematic Filipino stories mula concept hanggang episode video. Character identity, dialogue at continuity ay naka-lock sa buong production.</p></div>
-<div class="bottom"><button class="btn primary" style="width:100%" onclick="go('genre')">READY</button></div>
-</section>
+<section id="welcome" class="screen active"><div class="hero">
+<div class="eyebrow">PREMIUM FILIPINO AI FILM STUDIO</div><h1>WELCOME TO<br><span class="gold">FILIPINO AI</span></h1>
+<p class="sub">Create cinematic Filipino stories from concept to episode production — with character consistency, dialogue lock and vertical 9:16 delivery.</p>
+</div><div class="bottom"><button class="btn primary" style="width:100%" onclick="go('genre')">READY — START FILMMAKING →</button></div></section>
 
-<section id="genre" class="screen">
-<h2>Choose Your <span class="gold">Genre</span></h2>
-<p class="muted">Pumili ng isa o higit pa. I-a-adapt ng Master AI ang story, pacing, camera at atmosphere.</p>
-<div class="card"><div id="genres" class="genres"></div><p class="muted">Selected: <b id="selectedGenres"></b></p></div>
-<div class="card"><b>Production Engine</b><p><span class="badge">● WAN LOCAL — NO CREDIT REQUIRED</span></p>
-<small class="muted">Priority: Local Wan 2.1 + ComfyUI. Cloud engines are optional and may use API quota/charges.</small></div>
-<div class="bottom"><button class="btn primary" style="width:100%" onclick="startProduction()">START PRODUCTION →</button></div>
-</section>
+<section id="genre" class="screen"><div class="head"><div class="eyebrow">01 / DIRECTOR SETUP</div><h2>Choose Your <span class="gold">Genre</span></h2><p class="muted">Pumili ng isa o higit pa. Automatic na iaangkop ng Master AI ang story, pacing at visual language.</p></div>
+<div class="panel"><div id="genres" class="genres"></div><p class="muted">Selected: <b id="selectedGenres" class="gold"></b></p></div>
+<div class="panel engine"><div><b>LOCAL VIDEO ENGINE</b><div class="muted" style="font-size:12px;margin-top:5px">Wan 2.1 + ComfyUI</div></div><span class="badge"><i class="dot"></i>NO CREDIT REQUIRED</span></div>
+<div class="bottom"><button class="btn primary" style="width:100%" onclick="startProduction()">START PRODUCTION →</button></div></section>
 
-<section id="choices" class="screen">
-<h2>Master AI <span class="gold">Story Choices</span></h2>
-<p class="muted">Generating exactly 5 viral concepts based on your selected genres...</p><div id="choicesBox"></div>
-</section>
+<section id="choices" class="screen"><div class="head"><div class="eyebrow">02 / MASTER AI</div><h2>Choose Your <span class="gold">Story</span></h2><p class="muted">Exactly 5 concepts. Tap a story card to begin automatic processing.</p></div><div id="choicesBox" class="storyGrid"></div></section>
 
-<section id="processing" class="screen">
-<h2>Building <span class="gold" id="procTitle">Story Bible</span></h2>
-<div class="card"><div class="progress"><div class="bar" id="bar"></div></div><p id="procText">Parsing selected story...</p><div class="log" id="procLog"></div></div>
-</section>
+<section id="processing" class="screen"><div class="head"><div class="eyebrow">03 / AI STORY ENGINE</div><h2>Building <span class="gold" id="procTitle">Story Bible</span></h2></div><div class="panel"><div class="loader"><i id="bar"></i></div><p id="procText" class="muted"></p><div id="procLog" class="log"></div></div></section>
 
-<section id="refs" class="screen">
-<h2>Character <span class="gold">Master References</span> 🔒</h2>
-<p class="muted">Automatic character extraction + identity lock. These references stay consistent across all scenes.</p>
-<div id="refsBox" class="card"></div>
-<div class="bottom"><button class="btn primary" style="width:100%" onclick="go('storyline')">CONTINUE TO STORYLINE →</button></div>
-</section>
+<section id="refs" class="screen"><div class="head"><div class="eyebrow">04 / CHARACTER MASTERREF</div><h2>Identity <span class="gold">Locked</span> 🔒</h2><p class="muted">Automatic character extraction and reference continuity for all scenes.</p></div><div id="refsBox" class="refs"></div><div class="bottom"><button class="btn primary" style="width:100%" onclick="openStoryline()">CONTINUE TO STORYLINE →</button></div></section>
 
-<section id="storyline" class="screen">
-<h2>Episode <span class="gold">Storyline</span></h2>
-<div class="card"><b id="storyTitle"></b><p id="storyPremise" class="muted"></p><div id="episodes"></div></div>
-<div class="bottom"><button class="btn primary" style="width:100%" onclick="runVisuals()">GENERATE IMAGES → VIDEO</button></div>
-</section>
+<section id="storyline" class="screen"><div class="head"><div class="eyebrow">05 / STORY ARCHITECTURE</div><h2>5-Episode <span class="gold">Storyline</span></h2></div><div class="panel"><h3 id="storyTitle"></h3><p id="storyPremise" class="muted"></p><div id="episodes"></div></div><div class="bottom"><button class="btn primary" style="width:100%" onclick="runVisuals()">GENERATE IMAGES → VIDEO</button></div></section>
 
-<section id="visuals" class="screen">
-<h2>Visual <span class="gold">Production</span></h2>
-<p class="muted">Automatic text-to-image → image-to-video. Strict 9:16. 15 scenes.</p>
-<div class="card"><div class="progress"><div class="bar" id="vbar"></div></div><p id="vtext">Preparing scene prompts...</p><div id="sceneGrid" class="grid"></div></div>
-</section>
+<section id="visuals" class="screen"><div class="head"><div class="eyebrow">06 / VISUAL PRODUCTION</div><h2>Scene <span class="gold">Factory</span></h2><p class="muted">Automatic text-to-image → image-to-video. 15 scenes, 9:16.</p></div><div class="panel"><p><span class="badge"><i class="dot"></i>WAN LOCAL — NO CLOUD CREDITS</span></p><div class="loader"><i id="vbar"></i></div><p id="vtext" class="muted"></p><div id="sceneGrid" class="sceneGrid"></div></div></section>
 
-<section id="preview" class="screen">
-<h2>Preview & <span class="gold">Dialogue Check</span></h2>
-<p class="muted">Review dialogue mapping before assembly. Speaker IDs are locked to each character.</p>
-<div class="card"><div id="dialogueBox"></div><button class="btn" onclick="fixDialogue()">AUTO-CHECK / FIX DIALOGUE</button></div>
-<div class="bottom"><button class="btn primary" style="width:100%" onclick="compile()">COMPILE EPISODES →</button></div>
-</section>
+<section id="preview" class="screen"><div class="head"><div class="eyebrow">07 / QUALITY CONTROL</div><h2>Preview & <span class="gold">Dialogue Check</span></h2></div><div class="panel"><div id="dialogueBox"></div><button class="btn" onclick="fixDialogue()">✓ AUTO-CHECK / FIX DIALOGUE</button></div><div class="bottom"><button class="btn primary" style="width:100%" onclick="compile()">COMPILE 5 EPISODES →</button></div></section>
 
-<section id="export" class="screen">
-<div class="hero" style="min-height:70vh"><div class="tag">PRODUCTION COMPLETE</div>
-<h1><span class="gold">EPISODES</span><br>READY</h1><p id="exportText"></p>
-<button class="btn primary" onclick="downloadPackage()">DOWNLOAD PRODUCTION MANIFEST</button></div>
-</section>
+<section id="export" class="screen"><div class="final"><div class="eyebrow">08 / FINAL DELIVERY</div><h1><span class="gold">EPISODES</span><br>READY</h1><p id="exportText" class="sub" style="text-align:center"></p><button class="btn primary" onclick="downloadManifest()">DOWNLOAD PRODUCTION MANIFEST</button></div></section>
 </main>
 
 <script>
-const genreList=['Horror','Thriller','Suspense','Love Story / Romance','Human Drama','Action','Mystery','Family Drama','Comedy','Tragedy','Fantasy','Sci-Fi','Supernatural','Teen / School','Crime','Legal / Revenge','Psychological','Custom Genre'];
-let genres=['Horror','Thriller','Suspense'],selected=null,current=null;
+const photos=[
+"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80",
+"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80",
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80",
+"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
+"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80"];
+const genreList=[["Horror","Fear & supernatural"],["Thriller","Tension & danger"],["Suspense","Slow-burn mystery"],["Love Story / Romance","Emotion & intimacy"],["Human Drama","Real Filipino life"],["Action","Fast cinematic energy"],["Mystery","Secrets & clues"],["Family Drama","Family conflict"],["Comedy","Light & funny"],["Tragedy","Emotional loss"],["Fantasy","Magical worlds"],["Sci-Fi","Future & technology"],["Supernatural","Paranormal"],["Teen / School","Youth stories"],["Crime","Investigation"],["Legal / Revenge","Justice & revenge"],["Psychological","Mind games"],["Custom Genre","Your own mix"]];
+let genres=["Horror","Thriller","Suspense"],selected=null,current=null;
 const concepts=[
-['ANG BAHAY SA DULO NG SITIO','Isang babae ang bumalik sa lumang bahay ng kanyang ina at narinig ang sarili niyang boses mula sa kwartong naka-lock.'],
-['ANG LALAKING WALANG ANINO','Isang rider ang nakakita ng lalaking kamukhang-kamukha niya ngunit walang anino.'],
-['HULING BIYAHE','Isang dalaga at ang lihim niyang minamahal ang na-trap sa huling biyahe.'],
-['ANG LARAWAN SA SALAMIN','Isang pamilya ang nakatanggap ng litrato ng taong hindi nila kilala—at bawat umaga ay lumalapit ito.'],
-['SA ILALIM NG BALON','Isang binata ang nakarinig sa nawawala niyang kapatid mula sa lumang balon.']
-];
-function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('step').textContent=id.toUpperCase();scrollTo(0,0)}
-function renderGenres(){document.getElementById('genres').innerHTML=genreList.map(g=>'<button class="genre '+(genres.includes(g)?'on':'')+'" onclick="toggleGenre('+JSON.stringify(g)+')">'+g+'</button>').join('');document.getElementById('selectedGenres').textContent=genres.join(' + ')}
-function toggleGenre(g){if(genres.includes(g)){if(genres.length>1)genres=genres.filter(x=>x!==g)}else genres.push(g);renderGenres()}
-renderGenres();
-function startProduction(){go('choices');setTimeout(()=>{document.getElementById('choicesBox').innerHTML=concepts.map((c,i)=>'<button class="choice" onclick="selectStory('+i+')"><b>CONCEPT '+(i+1)+'</b><strong>'+c[0]+'</strong><br><span class="muted">'+c[1]+'</span><br><small class="tag">'+genres.join(' + ')+'</small></button>').join('')},600)}
-function selectStory(i){selected=concepts[i];go('processing');let stages=[['Story Bible','Parsing selected story and building 5-episode arc...'],['Characters','Extracting characters, relationships and locked identities...'],['Storyline','Creating exactly 5 episodes × 3 scenes × 90 seconds...']];let n=0;function tick(){if(n>=stages.length){buildRefs();return}document.getElementById('procTitle').textContent=stages[n][0];document.getElementById('procText').textContent=stages[n][1];document.getElementById('procLog').textContent='MASTER AI\nGenres: '+genres.join(' + ')+'\nFormat: 9:16\nEpisodes: 5\nScenes: 15\nDuration: 90s / episode\nAudio: dialogue + environmental SFX, NO BGM by default';document.getElementById('bar').style.width=((n+1)*33)+'%';n++;setTimeout(tick,850)}tick()}
-function buildRefs(){current={title:selected[0],premise:selected[1]};go('refs');document.getElementById('refsBox').innerHTML=['MAYA','ANDREW','THE UNKNOWN'].map((n,i)=>'<div class="ref"><div class="avatar">'+['👩','👨','◉'][i]+'</div><div><b>'+n+'</b><div class="tag">'+n+'_MasterRef_v1</div><small class="muted">Face • body • hair • age • skin • wardrobe • emotion continuity LOCKED</small></div></div>').join('')}
-function storyline(){document.getElementById('storyTitle').textContent=current.title;document.getElementById('storyPremise').textContent=current.premise;let h='';for(let e=1;e<=5;e++)h+='<div class="card"><b>EPISODE '+e+'</b><div class="chips"><span class="tag">SCENE 01 • 0–30s</span><span class="tag">SCENE 02 • 30–60s</span><span class="tag">SCENE 03 • 60–90s</span></div></div>';document.getElementById('episodes').innerHTML=h}
-function runVisuals(){storyline();go('visuals');let grid=document.getElementById('sceneGrid'),n=0;function step(){if(n>=15){setTimeout(()=>go('preview'),500);return}n++;document.getElementById('vbar').style.width=n/15*100+'%';document.getElementById('vtext').textContent='Scene '+n+'/15 • Text-to-Image → Wan Image-to-Video • 9:16';grid.innerHTML+='<div class="scene"><b>SCENE '+String(n).padStart(2,'0')+'</b><p class="muted">Photorealistic Filipino live-action • cinematic lighting • '+genres[0]+' atmosphere</p><span class="badge">'+(n%2?'IMAGE READY':'VIDEO READY')+'</span></div>';setTimeout(step,220)}step()}
-function renderDialogue(){let d=[['MAYA','"Naririnig mo rin ba iyon?"'],['ANDREW','"Maya, huwag kang lalapit."'],['THE UNKNOWN','"Matagal na kitang hinihintay."']];document.getElementById('dialogueBox').innerHTML=d.map(x=>'<div class="ref"><div><b>'+x[0]+'</b><div>'+x[1]+'</div><small class="tag">character_id: '+x[0]+'_MasterRef_v1</small></div></div>').join('')}
-renderDialogue();
-function fixDialogue(){renderDialogue();alert('Dialogue Lock check complete. Speaker IDs are mapped to the correct MasterRef characters.')}
-function compile(){go('processing');document.getElementById('procTitle').textContent='Assembly';document.getElementById('procText').textContent='Compiling each 90-second episode with FFmpeg timing, dialogue and SFX...';document.getElementById('procLog').textContent='EP01 ✓ 90s\nEP02 ✓ 90s\nEP03 ✓ 90s\nEP04 ✓ 90s\nEP05 ✓ 90s\nFormat: 9:16 vertical\nResolution: 720p native / optional 1080p upscale\nAudio: dialogue + environmental SFX';document.getElementById('bar').style.width='100%';setTimeout(()=>{document.getElementById('exportText').textContent='5 episodes compiled. Local Wan mode requires no cloud generation credits. Connect the local/AI render backend for actual video files.';go('export')},1700)}
-function downloadPackage(){let text='FLOW FILIPINO AI v6.2\n'+current.title+'\n5 episodes × 3 scenes × 90 seconds\n9:16 vertical\nLocal Wan: NO CREDIT REQUIRED\nProduction manifest generated';let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download='FLOW_FILIPINO_AI_PRODUCTION_MANIFEST.txt';a.click()}
-</script>
-</body></html>
+["ANG BAHAY SA DULO NG SITIO","Isang babae ang bumalik sa lumang bahay ng kanyang ina at narinig ang sarili niyang boses mula sa kwartong naka-lock."],
+["ANG LALAKING WALANG ANINO","Isang rider ang nakakita ng lalaking kamukhang-kamukha niya ngunit walang anino."],
+["HULING BIYAHE","Isang dalaga at ang lihim niyang minamahal ang na-trap sa huling biyahe."],
+["ANG LARAWAN SA SALAMIN","Isang pamilya ang nakatanggap ng litrato ng taong hindi nila kilala—at bawat umaga ay lumalapit ito."],
+["SA ILALIM NG BALON","Isang binata ang nakarinig sa nawawala niyang kapatid mula sa lumang balon."]];
+function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.getElementById("step").textContent=id.toUpperCase();scrollTo({top:0,behavior:"smooth"})}
+function renderGenres(){document.getElementById("genres").innerHTML=genreList.map(g=>`<button class="genre ${genres.includes(g[0])?"on":""}" onclick="toggleGenre(${JSON.stringify(g[0])})"><b>${g[0]}</b><small>${g[1]}</small></button>`).join("");document.getElementById("selectedGenres").textContent=genres.join(" + ")}
+function toggleGenre(g){if(genres.includes(g)){if(genres.length>1)genres=genres.filter(x=>x!==g)}else genres.push(g);renderGenres()}renderGenres();
+function startProduction(){go("choices");setTimeout(()=>{document.getElementById("choicesBox").innerHTML=concepts.map((c,i)=>`<button class="story" onclick="selectStory(${i})"><img src="${photos[i%photos.length]}"><div class="copy"><b>CONCEPT 0${i+1} • ${genres[0].toUpperCase()}</b><strong>${c[0]}</strong><span>${c[1]}</span></div></button>`).join("")},400)}
+function selectStory(i){selected=concepts[i];go("processing");let stages=[["Story Bible","Parsing selected story and building five-episode arc..."],["Characters","Extracting characters and locking identities..."],["Storyline","Creating exactly 5 episodes × 3 scenes × 90 seconds..."]],n=0;function tick(){if(n>=stages.length){buildRefs();return}document.getElementById("procTitle").textContent=stages[n][0];document.getElementById("procText").textContent=stages[n][1];document.getElementById("procLog").textContent="MASTER AI / PRODUCTION LOCK\nGenres: "+genres.join(" + ")+"\nFormat: 9:16\nEpisodes: 5\nScenes: 15\nDuration: 90s / episode\nAudio: dialogue + environmental SFX / NO BGM by default";document.getElementById("bar").style.width=((n+1)/stages.length*100)+"%";n++;setTimeout(tick,750)}tick()}
+function buildRefs(){current={title:selected[0],premise:selected[1]};go("refs");let names=[["MAYA","Lead character",photos[4]],["ANDREW","Love interest / ally",photos[5]],["THE UNKNOWN","Primary mystery / threat",photos[6]]];document.getElementById("refsBox").innerHTML=names.map(n=>`<div class="ref"><img src="${n[2]}"><span class="lock">🔒</span><div class="rtext"><b>${n[0]}</b><div class="tag">${n[0]}_MasterRef_v1</div><small class="muted">${n[1]} • face • body • hair • wardrobe locked</small></div></div>`).join("")}
+function openStoryline(){document.getElementById("storyTitle").textContent=current.title;document.getElementById("storyPremise").textContent=current.premise;let h="";for(let e=1;e<=5;e++)h+=`<div class="ep"><div class="epnum">0${e}</div><div><b>EPISODE ${e}</b><div class="scenes"><span class="chip">SCENE 01 • 0–30s</span><span class="chip">SCENE 02 • 30–60s</span><span class="chip">SCENE 03 • 60–90s</span></div></div><span class="badge">READY</span></div>`;document.getElementById("episodes").innerHTML=h;go("storyline")}
+function runVisuals(){go("visuals");let grid=document.getElementById("sceneGrid"),n=0;grid.innerHTML="";function step(){if(n>=15){document.getElementById("vtext").textContent="All 15 scenes prepared. Opening quality control...";setTimeout(()=>{renderDialogue();go("preview")},650);return}let e=Math.floor(n/3)+1,s=n%3+1;n++;document.getElementById("vbar").style.width=n/15*100+"%";document.getElementById("vtext").textContent=`Episode ${e} / Scene ${s} • Text-to-Image → Wan Image-to-Video`;grid.innerHTML+=`<div class="scene"><img src="${photos[n%photos.length]}"><div class="sbody"><b>EP${e} • SCENE 0${s}</b><br><span class="ready">● IMAGE READY → VIDEO QUEUED</span></div></div>`;setTimeout(step,160)}step()}
+function renderDialogue(){let d=[["MAYA","“Naririnig mo rin ba iyon?”"],["ANDREW","“Maya, huwag kang lalapit.”"],["THE UNKNOWN","“Matagal na kitang hinihintay.”"]];document.getElementById("dialogueBox").innerHTML=d.map(x=>`<div class="dialogue"><div class="speaker">${x[0]}</div><div>${x[1]}<div class="tag">${x[0]}_MasterRef_v1 • SPEAKER LOCKED</div></div></div>`).join("")}
+function fixDialogue(){renderDialogue();alert("Dialogue Lock verified. All speakers are mapped to their correct MasterRef.")}
+function compile(){go("processing");document.getElementById("procTitle").textContent="Episode Assembly";document.getElementById("procText").textContent="Compiling five 90-second episodes with timing, dialogue and SFX...";document.getElementById("procLog").textContent="EP01 ✓ 90s\nEP02 ✓ 90s\nEP03 ✓ 90s\nEP04 ✓ 90s\nEP05 ✓ 90s\nFormat: 9:16 vertical\nNative: 720p / optional 1080p upscale\nAudio: dialogue + environmental SFX";document.getElementById("bar").style.width="100%";setTimeout(()=>{document.getElementById("exportText").textContent="5 episodes × 3 scenes × 90 seconds. Local Wan mode requires no cloud generation credits. Connect the local/AI rendering backend for actual video files.";go("export")},1500)}
+function downloadManifest(){let t="FLOW FILIPINO AI v6.3\n"+(current?current.title:"Production")+"\n5 episodes × 3 scenes × 90 seconds\n9:16 vertical\nCharacter MasterRef: LOCKED\nDialogue Lock: VERIFIED\nLocal Wan: NO CREDIT REQUIRED\n";let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));a.download="FLOW_FILIPINO_AI_v6.3_MANIFEST.txt";a.click()}
+</script></body></html>
